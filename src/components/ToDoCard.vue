@@ -5,11 +5,11 @@
 <!-- <h2>Mardi 72 février</h2> -->
       <h2 class="highlight">{{title}}</h2>
      <!-- <h2>5 tâches</h2> -->
-      <h2>{{tasks.number}} tâche(s) </h2>
+      <h2>{{tasks.length}} tâche(s) </h2>
     </header>
     <section class="main">
       <!--newTodo-->
-      <NewTodo/>
+      <NewTodo @newTask="addTask"/>
       <!-- end  -->
       <ToDoList/>
     </section>
@@ -23,11 +23,15 @@ export default {
   data() {
    return {
       title: "VueJs Tutorial ToDo List",
-      tasks:{
-        number: 0,
-      }
+      tasks: [],
     }
 
+  },
+  methods: {
+     addTask:function(payload){
+       this.tasks.push(payload);
+        console.log(this.tasks);
+     }
   },
   computed: {
     date: function(){

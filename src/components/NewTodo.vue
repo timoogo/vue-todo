@@ -1,17 +1,20 @@
 <template>
   <div>
     <label for="task"></label>
-    <input id="task" type="text" placeholder="Nouvelle tâches..."/>
-    <button>+</button>
+    <input v-model="taskname" id="task" type="text" placeholder="Nouvelle tâches..."/>
+    <button @click="sendTask(taskname) ">+</button>
   </div>
 </template>
 <script>
 export default {
+
   name: "NewTodo",
 
   methods: {
-    newTask:{},
-    sendTask:{},
+    sendTask (taskname){
+      this.$emit("newTask", { name: taskname} )
+    }
+
   }
 }
 </script>

@@ -1,13 +1,10 @@
 <template>
   <ul>
-    <li>
-      <a href="#">content</a>
-      <a class="mydelete"  href="#">
-        <i class="fas fa-trash"></i>
-      </a>
-    </li>
-    <li>
-      <a href="#">content</a>
+    <li v-for="task in $parent.tasks"  v-bind:key="task">
+    <div class="task">
+      <input type="checkbox" name="a">
+      <a href="#">{{ task.name }}</a>
+    </div>
       <a class="mydelete"  href="#">
         <i class="fas fa-trash"></i>
       </a>
@@ -18,7 +15,12 @@
 
 <script>
 export default {
-name: "ToDoList"
+
+name: "ToDoList",
+  data() {
+    return this
+
+  }
 }
 </script>
 
@@ -46,5 +48,15 @@ name: "ToDoList"
     border-radius: 50%;
     height: auto;
     color: #fff !important;
+  }
+  ul li div.task{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 30%;
+    align-items: center;
+  }
+  div.task input[type = "checkbox"]{
+    border-radius: 50%;
   }
 </style>
